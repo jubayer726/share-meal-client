@@ -1,16 +1,41 @@
-import React, { useState } from "react";
+import React, { use, useState } from "react";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
-import { Link } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
+import { AuthContext } from "../Authorization/AuthContext";
 
 const Login = () => {
+  const {signInUser, signInwithGoogle} = use(AuthContext)
     const [showPass, setShowPass] = useState(false)
+    const location = useLocation();
+    const navigate = useNavigate();
 
-    const handleLogIn = () =>{
-        console.log("click login button");
-    }
+  const handleLogIn = (e) =>{
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
 
-    const handleGoogleLogin = () =>{
-        console.log("clicked");
+    signInUser(email, password)
+    .then(result=>{
+      console.log(result.user);
+       navigate(`${location.state? location.state : "/"}`)
+    })
+    .catch(error=>{
+      console.log(error.message);
+    })
+
+  }
+    const handleGoogleSignIn = () =>{
+        signInwithGoogle()
+        .then(result=>{
+            console.log(result.user);
+            alert("Register Successfully")
+            navigate(`${location.state? location.state : "/"}`)
+        })
+        .catch(error=>{
+            console.log(error.message);
+        })
+
     }
 
   return (
@@ -62,7 +87,7 @@ const Login = () => {
           <div className="h-px w-20 bg-gray-400"></div>
         </div>
         {/* Google */}
-        <button onClick={handleGoogleLogin} className="btn bg-white text-black border-[#e5e5e5] m-5">
+        <button onClick={handleGoogleSignIn} className="btn bg-white text-black border-[#e5e5e5] m-5">
           <svg
             aria-label="Google logo"
             width="16"

@@ -1,12 +1,32 @@
-import React from "react";
+import React, { use } from "react";
 import logo from "/logo2.png";
 import { Link, NavLink } from "react-router";
+import { AuthContext } from "../Authorization/AuthContext";
+import { FaUser } from "react-icons/fa";
+import { FaGear } from "react-icons/fa6";
+import { IoLogIn, IoLogOut } from "react-icons/io5";
 
 const Navbar = () => {
-      const links = <>
+  const { user, signOutWithGoogle } = use(AuthContext);
+  console.log(user);
+
+  const links = <>
         <li><NavLink to='/' className={({isActive} )=>isActive? "text-gray-600 underline" : ""}>Home</NavLink></li>
         <li><NavLink to='/available-foods' className={({isActive} )=>isActive? "text-gray-600 underline" : ""}>Available Foods</NavLink></li>
     </>
+
+
+
+  const handleLogOut = () => {
+    signOutWithGoogle()
+      .then(() => {
+        alert("Logout Successfully");
+      })
+      .catch((error) => {
+        alert(error.message);
+      });
+  };
+
   return (
     <div className="navbar bg-base-200 shadow-sm px-4">
       <div className="navbar-start">
@@ -43,12 +63,67 @@ const Navbar = () => {
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1 text-xl font-semibold">
+        <ul className="menu menu-horizontal px-1 text-l font-semibold">
           {links}
         </ul>
-      </div>
-      <div className="navbar-end">
-        <Link to='/login' className="btn text-orange-500 font-bold">Login</Link>
+      </div>  
+           
+      <div className="navbar-end gap-3">
+        {user ? (
+          <div className="dropdown dropdown-end z-50">
+            <div
+              tabIndex={0}
+              role="button"
+              className="btn btn-ghost btn-circle avatar"
+            >
+              <div className="w-9 border-2 border-gray-300 rounded-full">
+                <img
+                  alt="Tailwind CSS Navbar component"
+                  referrerPolicy="no-referrer"
+                  src={
+                    user.photoURL ||
+                    "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+                  }
+                />
+              </div>
+            </div>
+            <ul
+              tabIndex="-1"
+              className="menu  menu-sm dropdown-content bg-base-100 rounded-box z-50 mt-3 w-52 p-2 shadow"
+            >
+              <div className=" pb-3 border-b border-b-gray-200">
+                <li className="text-sm font-bold">{user.displayName}</li>
+                <li className="text-xs">{user.email}</li>
+              </div>
+              <li className="mt-3">
+                <Link to={"/add-food"}>Add Food</Link>
+              </li>
+
+              <li>
+                <Link to={"/manage-foods"}>Manage My Foods</Link>
+              </li>
+
+              <li>
+                <Link to={"/food-request"}>My Food Requests</Link>
+              </li>
+              <li><button
+                  onClick={handleLogOut}
+                  className="btn btn-xs text-left bg-linear-to-r from-orange-500 to-red-500 text-white my-2"
+                >
+                  <IoLogOut /> Logout
+                </button>
+              </li>
+            </ul>
+          </div>
+        ) : (
+          <Link
+            to={"/login"}
+            className="btn rounded-full border-gray-300  btn-sm bg-linear-to-r from-orange-500 to-red-500 text-white"
+          >
+            {" "}
+            <IoLogIn /> Login
+          </Link>
+        )}
       </div>
     </div>
   );

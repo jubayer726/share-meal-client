@@ -6,6 +6,9 @@ import MainLayout from './MainLayout';
 import AvailableFoods from '../Pages/AvailableFoods';
 import Login from '../Pages/Login';
 import Register from '../Pages/Register';
+import AddFood from '../Pages/AddFood';
+import ManageMyFoods from '../Pages/ManageMyFoods';
+import MyFoodRequests from '../Pages/MyFoodRequests';
 
 const Root = createBrowserRouter([
   {
@@ -28,7 +31,19 @@ const Root = createBrowserRouter([
          {
             path: 'register',
             Component: Register
-        }
+        },
+        {
+            path: 'add-food',
+            element: <AddFood></AddFood>
+        },
+        {
+            path: 'manage-foods',
+            element: <ManageMyFoods></ManageMyFoods>
+        },
+        {
+            path: 'food-request',
+            element: <MyFoodRequests></MyFoodRequests>
+        },
     ]
   },
 ]);

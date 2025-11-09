@@ -1,17 +1,35 @@
-import React, { useState } from 'react';
+import React, { use, useState } from 'react';
 import { FaRegEye, FaRegEyeSlash } from 'react-icons/fa';
 import { Link } from 'react-router';
+import { AuthContext } from '../Authorization/AuthContext';
+
+
 
 const Register = () => {
-
+  const {createUser, signInwithGoogle} = use(AuthContext)
     const [showPass, setShowPass] = useState(false)
 
-    const handleSignUp = () =>{
-        console.log("Click signup buttton");
-    }
-
+    const handleSignUp = (e) =>{
+    e.preventDefault();
+    const form = e.target;
+    // const name = form.name.value;
+    // const photo = form.photo.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    createUser(email, password)
+    .then(result=>{
+      console.log(result.user);
+    })
+  }
     const handleGoogleLogin = () =>{
-        console.log("Click signin with google");
+        signInwithGoogle()
+        .then(result=>{
+          console.log(result.user);
+          alert("Register successfully")
+        })
+        .catch(error=>{
+          console.log(error.message);
+        })
     }
 
     return (

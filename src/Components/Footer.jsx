@@ -30,11 +30,9 @@ const Footer = () => {
         </nav>
         <nav>
           <h6 className="footer-title">Information</h6>
-          <ul className="space-y-1 text-sm">
-            <li>Privacy Policy</li>
-            <li>Terms & Conditions</li>
-            <li>Join Us</li>
-          </ul>
+          <a className="link link-hover">Privacy Policy</a>
+          <a className="link link-hover">Terms & Conditions</a>
+          <a className="link link-hover">Join Us</a>
         </nav>
         <nav>
           <h6 className="footer-title">Social</h6>
