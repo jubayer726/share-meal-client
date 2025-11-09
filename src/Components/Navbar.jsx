@@ -28,7 +28,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="navbar bg-base-200 shadow-sm px-4">
+    <div className="navbar bg-green-50 shadow-sm px-4">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -76,7 +76,7 @@ const Navbar = () => {
               role="button"
               className="btn btn-ghost btn-circle avatar"
             >
-              <div className="w-12 border-2 border-gray-300 rounded-full">
+              <div className="w-12 border-2 border-green-300 rounded-full">
                 <img
                   alt="Tailwind CSS Navbar component"
                   referrerPolicy="no-referrer"
