@@ -56,7 +56,7 @@ const Navbar = () => {
           </ul>
         </div>
         <Link to="/" className="flex gap-1 justify-center items-center">
-          <img className="w-14" src={logo} alt="Logo" />
+          <img className="w-14 rounded-full" src={logo} alt="Logo" />
           <h1 className="btn-ghost text-2xl text-green-800 font-bold">
             Share Meal
           </h1>
@@ -76,13 +76,13 @@ const Navbar = () => {
               role="button"
               className="btn btn-ghost btn-circle avatar"
             >
-              <div className="w-9 border-2 border-gray-300 rounded-full">
+              <div className="w-12 border-2 border-gray-300 rounded-full">
                 <img
                   alt="Tailwind CSS Navbar component"
                   referrerPolicy="no-referrer"
                   src={
                     user.photoURL ||
-                    "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRI9lRck6miglY0SZF_BZ_sK829yiNskgYRUg&s"
                   }
                 />
               </div>
@@ -92,7 +92,7 @@ const Navbar = () => {
               className="menu  menu-sm dropdown-content bg-base-100 rounded-box z-50 mt-3 w-52 p-2 shadow"
             >
               <div className=" pb-3 border-b border-b-gray-200">
-                <li className="text-sm font-bold">{user.displayName}</li>
+                <li className="text-sm font-bold">{user.displayName || "User Name"}</li>
                 <li className="text-xs">{user.email}</li>
               </div>
               <li className="mt-3">
