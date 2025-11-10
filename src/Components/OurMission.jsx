@@ -4,8 +4,9 @@ const OurMission = () => {
   return (
    <div className="w-7xl mx-auto py-10 text-green-700">
     <div className="py-5">
-        <h1 className="text-3xl font-bold  text-center">Our Purpose & Our Values</h1>
-        <p className="text-center">Empowering people to end global hunger</p>
+        <h1 className="text-3xl font-bold  text-center py-4">Our Purpose & Our Values</h1>
+        <p className="text-center text-xl text-green-400">Empowering people to end global hunger</p>
+        <p className="text-sm text-center p-8">We're here to end global hunger. And were guessing you are too. That's why we were founded in 2015 under the United Nations World Food Programme — <br /> to make fighting hunger accessible to everyone. Because with just BDT 68.00 and a few taps on your phone, you can share your meal with someone in need.</p>
     </div>
      <div className="flex justify-between">
       <div className="max-w-sm bg-white border border-gray-200 rounded-xl shadow-sm p-6 text-center hover:shadow-md transition">
