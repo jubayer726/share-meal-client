@@ -33,7 +33,7 @@ const Root = createBrowserRouter([
         hydrateFallback: <Loading></Loading>
       },
        {
-        path: "food-details",
+        path: "food-details/:id",
         element: <PrivateRoute>
           <FoodDetails></FoodDetails>
         </PrivateRoute>

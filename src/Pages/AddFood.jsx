@@ -1,10 +1,65 @@
-import React from 'react';
+import React, { use } from 'react';
+import { AuthContext } from '../Authorization/AuthContext';
+import Swal from 'sweetalert2';
 
 const AddFood = () => {
+  const {user} = use(AuthContext)
+  
+    const handleSubmit = (e) =>{
+        e.preventDefault();
+        const form = e.target;
+        const formData = {
+          food_name: form.name.value,
+          food_quantity: form.quantity.value,
+          pickup_location: form.location.value,
+          expire_date: form.expire.value,
+          additional_notes: form.description.value,
+          food_image: form.photo.value,
+          donator_name: user.displayName,
+          donator_image: user.photoURL,
+          created_by: user.email,
+          created_at: new Date(),
+          food_status: form.available.value
+        };
 
-    const handleSubmit = () =>{
-        console.log("Clicked");
-    }
+         Swal.fire({
+          title: "Are you sure?",
+          text: "You won't be able to revert this!",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Yes, added it!",
+        }).then((result) => {
+          if (result.isConfirmed) {
+        fetch('http://localhost:3000/foods',{
+          method: "POST",
+          headers: {
+            "Content-type" : "application/json",
+          },
+          body: JSON.stringify(formData)
+        })
+        .then(res=>res.json())
+        .then(data=>{
+          console.log(data);
+        })
+        .catch(error=>{
+          console.log(error);
+        })
+        
+            Swal.fire({
+              title: "Added!",
+              text: "Your file has been added.",
+              icon: "success",
+            });
+          }
+          
+        })
+        .catch((error) => {
+        console.log(error);
+      });
+  };
+  
     return (
         <div className="card border border-gray-200 bg-base-100 w-full max-w-md mx-auto shadow-2xl rounded-2xl">
       <div className="card-body p-6 relative">
@@ -18,7 +73,7 @@ const AddFood = () => {
               name="name"
               required
               className="input w-full rounded-full focus:border-0 focus:outline-gray-200"
-              placeholder="Enter name"
+              placeholder="Food Name"
             />
           </div>
 
@@ -34,14 +89,14 @@ const AddFood = () => {
               <option value="" disabled>
                 Select Quantity for People
               </option>
-              <option value="Vehicles">Serves 1 people</option>
-              <option value="Plants">Serves 2 people</option>
-              <option value="Foods">Serves 3 people</option>
-              <option value="Home & Living">Serves 4 people</option>
-              <option value="Characters">Serves 5 more people</option>
-              <option value="Space">Serves 10 more people</option>
-              <option value="Animals">Serves 20 more people</option>
-              <option value="Other">Serves 100 more people</option>
+              <option value="01">Serves 1 people</option>
+              <option value="02">Serves 2 people</option>
+              <option value="03">Serves 3 people</option>
+              <option value="04">Serves 4 people</option>
+              <option value="05">Serves 5 more people</option>
+              <option value="10">Serves 10 more people</option>
+              <option value="20">Serves 20 more people</option>
+              <option value="100">Serves 100 more people</option>
             </select>
           </div>
             {/* Pickup Location */}
@@ -52,18 +107,18 @@ const AddFood = () => {
               name="location"
               required
               className="input w-full rounded-full focus:border-0 focus:outline-gray-200"
-              placeholder="Enter name"
+              placeholder="Pickup Location"
             />
           </div>
             {/* Expire Date */}
            <div>
-            <label className="label font-medium">Food Name</label>
+            <label className="label font-medium">Expire Date</label>
             <input
               type="text"
               name="expire"
               required
               className="input w-full rounded-full focus:border-0 focus:outline-gray-200"
-              placeholder="Enter name"
+              placeholder="Expire Date"
             />
           </div>
 
@@ -79,12 +134,29 @@ const AddFood = () => {
             ></textarea>
           </div>
 
-          {/* Thumbnail URL */}
+          {/* Status Dropdown */}
+          <div>
+            <label className="label font-medium">Food Status</label>
+            <select
+              defaultValue={""}
+              name="available"
+              required
+              className="select w-full rounded-full focus:border-0 focus:outline-gray-200"
+            >
+              <option value="" disabled>
+                Food Status
+              </option>
+              <option value="Available">Available</option>
+              <option value="Not-Availabl">Not-Available</option>
+            </select>
+          </div>
+
+          {/* Food Photo URL */}
           <div>
             <label className="label font-medium">Foods Photo URL</label>
             <input
               type="url"
-              name="thumbnail"
+              name="photo"
               required
               className="input w-full rounded-full focus:border-0 focus:outline-gray-200"
               placeholder="https://example.com/image.jpg"

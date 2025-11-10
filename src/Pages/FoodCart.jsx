@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router";
 
 const FoodCart = ({ food }) => {
+  console.log(food);
   const { food_image, food_name, food_quantity, pickup_location, _id } = food;
   return (
     <div>
@@ -21,7 +22,7 @@ const FoodCart = ({ food }) => {
           </h2>
           {/* <p className="text-gray-600 py-3 font-semibold ">{description}</p> */}
           <Link
-            to={`/modeldetails/${_id}`}
+            to={`/food-details/${_id}`}
             className="btn w-full outline outline-green-600 "
           >
             View Details

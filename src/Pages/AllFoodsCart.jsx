@@ -21,7 +21,7 @@ const AllFoodsCart = ({food}) => {
           </h2>
           {/* <p className="text-gray-600 py-3 font-semibold ">{description}</p> */}
           <Link
-            to={`/modeldetails/${_id}`}
+            to={`/food-details/${_id}`}
             className="btn w-full outline outline-green-600 "
           >
             View Details
