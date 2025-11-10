@@ -9,6 +9,7 @@ import AddFood from "../Pages/AddFood";
 import ManageMyFoods from "../Pages/ManageMyFoods";
 import MyFoodRequests from "../Pages/MyFoodRequests";
 import AvailableFoods from "../Pages/AvailableFoods";
+import FoodDetails from "../Pages/FoodDetails";
 
 
 
@@ -26,6 +27,11 @@ const Root = createBrowserRouter([
         path: "available-foods",
         Component: AvailableFoods
       },
+       {
+        path: "food-details",
+        Component: FoodDetails
+      },
+  
       {
         path: "login",
         Component: Login,
