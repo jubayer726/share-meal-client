@@ -10,6 +10,7 @@ import ManageMyFoods from "../Pages/ManageMyFoods";
 import MyFoodRequests from "../Pages/MyFoodRequests";
 import AvailableFoods from "../Pages/AvailableFoods";
 import FoodDetails from "../Pages/FoodDetails";
+import PrivateRoute from "../Authorization/PrivateRoute";
 
 
 
@@ -29,7 +30,9 @@ const Root = createBrowserRouter([
       },
        {
         path: "food-details",
-        Component: FoodDetails
+        element: <PrivateRoute>
+          <FoodDetails></FoodDetails>
+        </PrivateRoute>
       },
   
       {
@@ -42,15 +45,21 @@ const Root = createBrowserRouter([
       },
       {
         path: "add-food",
-        element: <AddFood></AddFood>,
+        element: <PrivateRoute>
+          <AddFood></AddFood>
+        </PrivateRoute>,
       },
       {
         path: "manage-foods",
-        element: <ManageMyFoods></ManageMyFoods>,
+        element: <PrivateRoute>
+          <ManageMyFoods></ManageMyFoods>
+        </PrivateRoute>,
       },
       {
         path: "food-request",
-        element: <MyFoodRequests></MyFoodRequests>,
+        element:<PrivateRoute>
+           <MyFoodRequests></MyFoodRequests>
+        </PrivateRoute>,
       },
     ],
   },

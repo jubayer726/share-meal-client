@@ -1,25 +1,42 @@
 import React, { use, useState } from 'react';
 import { FaRegEye, FaRegEyeSlash } from 'react-icons/fa';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { AuthContext } from '../Authorization/AuthContext';
+import { toast } from 'react-toastify';
 
 
 
 const Register = () => {
-  const {createUser, signInwithGoogle} = use(AuthContext)
+  const {createUser,profileUpdate, signInwithGoogle, user, setUser} = use(AuthContext)
     const [showPass, setShowPass] = useState(false)
+    const navigate = useNavigate()
 
     const handleSignUp = (e) =>{
     e.preventDefault();
     const form = e.target;
-    // const name = form.name.value;
-    // const photo = form.photo.value;
+    const name = form.name.value;
+    const photo = form.photo.value;
     const email = form.email.value;
     const password = form.password.value;
+
+    const regex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+    if (!regex.test(password)) {
+      toast.error("Password must include uppercase, lowercase, and be at least 6 characters.");
+      return;
+    }
     createUser(email, password)
     .then(result=>{
       console.log(result.user);
+      profileUpdate({ displayName: name, photoURL: photo })
+          .then(() => {
+            setUser({ ...user, displayName: name, photoURL: photo });
+            navigate("/");
+          })
     })
+    .catch(error=>{
+      console.log(error.message);
+    })
+
   }
     const handleGoogleLogin = () =>{
         signInwithGoogle()
