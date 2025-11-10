@@ -11,6 +11,8 @@ import MyFoodRequests from "../Pages/MyFoodRequests";
 import AvailableFoods from "../Pages/AvailableFoods";
 import FoodDetails from "../Pages/FoodDetails";
 import PrivateRoute from "../Authorization/PrivateRoute";
+import Loading from "../Components/Loading";
+
 
 
 
@@ -26,7 +28,9 @@ const Root = createBrowserRouter([
       },
       {
         path: "available-foods",
-        Component: AvailableFoods
+        Component: AvailableFoods,
+        loader: ()=> fetch('http://localhost:3000/available-foods'),
+        hydrateFallback: <Loading></Loading>
       },
        {
         path: "food-details",
