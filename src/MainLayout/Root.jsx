@@ -13,9 +13,6 @@ import FoodDetails from "../Pages/FoodDetails";
 import PrivateRoute from "../Authorization/PrivateRoute";
 import Loading from "../Components/Loading";
 
-
-
-
 const Root = createBrowserRouter([
   {
     path: "/",
@@ -29,16 +26,18 @@ const Root = createBrowserRouter([
       {
         path: "available-foods",
         Component: AvailableFoods,
-        loader: ()=> fetch('http://localhost:3000/available-foods'),
-        hydrateFallback: <Loading></Loading>
+        loader: () => fetch("http://localhost:3000/available-foods"),
+        hydrateFallback: <Loading></Loading>,
       },
-       {
+      {
         path: "food-details/:id",
-        element: <PrivateRoute>
-          <FoodDetails></FoodDetails>
-        </PrivateRoute>
+        element: (
+          <PrivateRoute>
+            <FoodDetails></FoodDetails>
+          </PrivateRoute>
+        ),
       },
-  
+
       {
         path: "login",
         Component: Login,
@@ -49,21 +48,27 @@ const Root = createBrowserRouter([
       },
       {
         path: "add-food",
-        element: <PrivateRoute>
-          <AddFood></AddFood>
-        </PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <AddFood></AddFood>
+          </PrivateRoute>
+        ),
       },
       {
-        path: "manage-foods/:id",
-        element: <PrivateRoute>
-          <ManageMyFoods></ManageMyFoods>
-        </PrivateRoute>,
+        path: "manage-foods",
+        element: (
+          <PrivateRoute>
+            <ManageMyFoods></ManageMyFoods>
+          </PrivateRoute>
+        ),
       },
       {
         path: "food-request",
-        element:<PrivateRoute>
-           <MyFoodRequests></MyFoodRequests>
-        </PrivateRoute>,
+        element: (
+          <PrivateRoute>
+            <MyFoodRequests></MyFoodRequests>
+          </PrivateRoute>
+        ),
       },
     ],
   },
