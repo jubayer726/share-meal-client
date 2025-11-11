@@ -20,6 +20,7 @@ const [user, setUser] = useState(null);
     }
 
     const profileUpdate = (updateData) =>{
+         setLoading(true)
         return updateProfile(auth.currentUser, updateData)
      }
 

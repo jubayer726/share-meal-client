@@ -1,9 +1,10 @@
-import React, { use } from 'react';
+import React, { use, useState } from 'react';
 import { AuthContext } from '../Authorization/AuthContext';
 import Swal from 'sweetalert2';
 
 const AddFood = () => {
-  const {user} = use(AuthContext)
+  const {user} = use(AuthContext);
+  const [refetch, setRefetch] = useState(false);
   
     const handleSubmit = (e) =>{
         e.preventDefault();
@@ -42,6 +43,7 @@ const AddFood = () => {
         .then(res=>res.json())
         .then(data=>{
           console.log(data);
+          setRefetch(!refetch)
         })
         .catch(error=>{
           console.log(error);
@@ -62,7 +64,7 @@ const AddFood = () => {
   
     return (
         <div className="card border border-gray-200 bg-base-100 w-full max-w-md mx-auto shadow-2xl rounded-2xl">
-      <div className="card-body p-6 relative">
+        <div className="card-body p-6 relative">
         <h2 className="text-2xl font-bold text-center mb-6">Add New Foods</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* Name Field */}
