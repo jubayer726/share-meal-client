@@ -5,7 +5,7 @@ const FoodCart = ({ food }) => {
   console.log(food);
   const { food_image, food_name, food_quantity, pickup_location, _id } = food;
   return (
-    <div>
+    <div className="">
       <div className="card bg-base-100 shadow-sm">
         <figure className="px-4 pt-4">
           <img

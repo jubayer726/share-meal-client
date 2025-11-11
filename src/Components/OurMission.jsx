@@ -8,8 +8,8 @@ const OurMission = () => {
         <p className="text-center text-xl text-green-400">Empowering people to end global hunger</p>
         <p className="text-sm text-center p-8">We're here to end global hunger. And were guessing you are too. That's why we were founded in 2015 under the United Nations World Food Programme — <br /> to make fighting hunger accessible to everyone. Because with just BDT 68.00 and a few taps on your phone, you can share your meal with someone in need.</p>
     </div>
-     <div className="flex justify-between">
-      <div className="max-w-sm bg-white border border-gray-200 rounded-xl shadow-sm p-6 text-center hover:shadow-md transition">
+     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 justify-between">
+      <div className="max-w-sm bg-white border border-gray-200 rounded-xl shadow-sm m-5 p-6 text-center hover:shadow-md transition">
         <div className="flex justify-center items-center gap-3 mb-4">
           <div className="w-14 h-14 flex items-center justify-center rounded-full bg-blue-50">
             <img src="https://i.postimg.cc/MXJw7ntF/M1.avif" alt="photo" />
@@ -22,7 +22,7 @@ const OurMission = () => {
         </p>
       </div>
 
-      <div className="max-w-sm bg-white border border-gray-200 rounded-xl shadow-sm p-6 text-center hover:shadow-md transition">
+      <div className="max-w-sm bg-white border border-gray-200 rounded-xl shadow-sm m-5 p-6 text-center hover:shadow-md transition">
         <div className="flex justify-center items-center gap-3 mb-4">
           <div className="w-14 h-14 flex items-center justify-center rounded-full bg-blue-50">
             <img src="https://i.postimg.cc/0r1vYzZW/m2.avif" alt="photo" />
@@ -34,7 +34,7 @@ const OurMission = () => {
         </p>
       </div>
 
-      <div className="max-w-sm bg-white border border-gray-200 rounded-xl shadow-sm p-6 text-center hover:shadow-md transition">
+      <div className="max-w-sm bg-white border border-gray-200 rounded-xl shadow-sm m-5 p-6 text-center hover:shadow-md transition">
         <div className="flex justify-center items-center gap-3 mb-4">
           <div className="w-14 h-14 flex items-center justify-center rounded-full bg-blue-50">
             <img src="https://i.postimg.cc/Rqxm7WG8/m3.avif" alt="photo" />

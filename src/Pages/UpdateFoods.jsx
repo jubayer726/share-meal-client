@@ -1,71 +1,50 @@
-import React, { use, useState } from 'react';
-import { AuthContext } from '../Authorization/AuthContext';
+import React from 'react';
+import { useLoaderData, useNavigate } from 'react-router';
 import Swal from 'sweetalert2';
 
-const AddFood = () => {
-  const {user} = use(AuthContext);
-  const [refetch, setRefetch] = useState(false);
-  
-    const handleSubmit = (e) =>{
-        e.preventDefault();
-        const form = e.target;
-        const formData = {
-          food_name: form.name.value,
+const UpdateFoods = () => {
+    const data = useLoaderData();
+  const navigate = useNavigate();
+
+ console.log(data);
+
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const formData = {
+      food_name: form.name.value,
           food_quantity: form.quantity.value,
           pickup_location: form.location.value,
           expire_date: form.expire.value,
           additional_notes: form.description.value,
           food_image: form.photo.value,
-          donator_name: user.displayName,
-          donator_image: user.photoURL,
-          created_by: user.email,
-          created_at: new Date(),
           food_status: form.available.value
-        };
-
-         Swal.fire({
-          title: "Are you sure?",
-          text: "You won't be able to revert this!",
-          icon: "warning",
-          showCancelButton: true,
-          confirmButtonColor: "#3085d6",
-          cancelButtonColor: "#d33",
-          confirmButtonText: "Yes, added it!",
-        }).then((result) => {
-          if (result.isConfirmed) {
-        fetch('http://localhost:3000/foods',{
-          method: "POST",
-          headers: {
-            "Content-type" : "application/json",
-          },
-          body: JSON.stringify(formData)
-        })
-        .then(res=>res.json())
-        .then(data=>{
-          console.log(data);
-          setRefetch(!refetch)
-        })
-        .catch(error=>{
-          console.log(error);
-        })
-        
-            Swal.fire({
-              title: "Added!",
-              text: "Your file has been added.",
-              icon: "success",
-            });
-          }
-          
-        })
-        .catch((error) => {
-        console.log(error);
+    };
+    fetch(`http://localhost:3000/foods/${data._id}`, {
+      method: "PUT",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    })
+       .then((res) => res.json())
+      .then((data) => {
+        if (data.modifiedCount > 0) {
+          Swal.fire({
+            title: "✅ Updated!",
+            text: "Food details updated successfully!",
+            icon: "success",
+            confirmButtonColor: "#22c55e",
+          });
+          navigate("/manage-foods");
+        }
       });
-  };
-  
+    }
     return (
         <div className="card border border-gray-200 bg-base-100 w-full max-w-md mx-auto shadow-2xl rounded-2xl">
         <div className="card-body p-6 relative">
-        <h2 className="text-2xl font-bold text-center mb-6">Add New Foods</h2>
+        <h2 className="text-2xl font-bold text-center mb-6">Update Food Details</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* Name Field */}
           <div>
@@ -73,17 +52,18 @@ const AddFood = () => {
             <input
               type="text"
               name="name"
+              defaultValue={data.food_name}
               required
               className="input w-full rounded-full focus:border-0 focus:outline-gray-200"
               placeholder="Food Name"
             />
           </div>
 
-          {/* Category Dropdown */}
+          {/* Quantity Dropdown */}
           <div>
             <label className="label font-medium">Quantity</label>
             <select
-              defaultValue={""}
+              defaultValue={data.food_quantity}
               name="quantity"
               required
               className="select w-full rounded-full focus:border-0 focus:outline-gray-200"
@@ -107,6 +87,7 @@ const AddFood = () => {
             <input
               type="text"
               name="location"
+              defaultValue={data.pickup_location}
               required
               className="input w-full rounded-full focus:border-0 focus:outline-gray-200"
               placeholder="Pickup Location"
@@ -118,6 +99,7 @@ const AddFood = () => {
             <input
               type="text"
               name="expire"
+              defaultValue={data.expire_date}
               required
               className="input w-full rounded-full focus:border-0 focus:outline-gray-200"
               placeholder="Expire Date"
@@ -129,6 +111,7 @@ const AddFood = () => {
             <label className="label font-medium">Description</label>
             <textarea
               name="description"
+              defaultValue={data.additional_notes}
               required
               rows="3"
               className="textarea w-full rounded-2xl focus:border-0 focus:outline-gray-200 h-[200px]"
@@ -140,7 +123,7 @@ const AddFood = () => {
           <div>
             <label className="label font-medium">Food Status</label>
             <select
-              defaultValue={""}
+              defaultValue={data.food_status}
               name="available"
               required
               className="select w-full rounded-full focus:border-0 focus:outline-gray-200"
@@ -159,6 +142,7 @@ const AddFood = () => {
             <input
               type="url"
               name="photo"
+              defaultValue={data.food_image}
               required
               className="input w-full rounded-full focus:border-0 focus:outline-gray-200"
               placeholder="https://example.com/image.jpg"
@@ -170,7 +154,7 @@ const AddFood = () => {
             type="submit"
             className="btn w-full text-white mt-6 rounded-full bg-linear-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700"
           >
-            Add Food
+            Save Changes
           </button>
         </form>
       </div>
@@ -178,4 +162,4 @@ const AddFood = () => {
     );
 };
 
-export default AddFood;
+export default UpdateFoods;
