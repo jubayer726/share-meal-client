@@ -2,20 +2,15 @@ import React, { use } from "react";
 import logo from "/logo2.png";
 import { Link, NavLink } from "react-router";
 import { AuthContext } from "../Authorization/AuthContext";
-import { FaUser } from "react-icons/fa";
-import { FaGear } from "react-icons/fa6";
 import { IoLogIn, IoLogOut } from "react-icons/io5";
 
 const Navbar = () => {
   const { user, signOutWithGoogle } = use(AuthContext);
-  console.log(user);
 
   const links = <>
         <li><NavLink to='/' className={({isActive} )=>isActive? "text-gray-600 underline" : ""}>Home</NavLink></li>
         <li><NavLink to='/available-foods' className={({isActive} )=>isActive? "text-gray-600 underline" : ""}>Available Foods</NavLink></li>
     </>
-
-
 
   const handleLogOut = () => {
     signOutWithGoogle()

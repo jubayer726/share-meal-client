@@ -91,14 +91,18 @@ const AddFood = () => {
               <option value="" disabled>
                 Select Quantity for People
               </option>
-              <option value="01">Serves 1 people</option>
-              <option value="02">Serves 2 people</option>
-              <option value="03">Serves 3 people</option>
-              <option value="04">Serves 4 people</option>
-              <option value="05">Serves 5 more people</option>
-              <option value="10">Serves 10 more people</option>
-              <option value="20">Serves 20 more people</option>
-              <option value="100">Serves 100 more people</option>
+              <option value="01 Person">Serves 1 people</option>
+              <option value="02 Person">Serves 2 people</option>
+              <option value="03 Person">Serves 3 people</option>
+              <option value="04 Person">Serves 4 people</option>
+              <option value="05 Person">Serves 5 people</option>
+              <option value="06 Person">Serves 6 people</option>
+              <option value="07 Person">Serves 7 people</option>
+              <option value="08 Person">Serves 8 people</option>
+              <option value="09 Person">Serves 9 people</option>
+              <option value="10 Person +">Serves 10 more people</option>
+              <option value="20 Person +">Serves 20 more people</option>
+              <option value="100 Person +">Serves 100 more people</option>
             </select>
           </div>
             {/* Pickup Location */}
