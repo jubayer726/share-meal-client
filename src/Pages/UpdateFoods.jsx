@@ -21,7 +21,7 @@ const UpdateFoods = () => {
           food_image: form.photo.value,
           food_status: form.available.value
     };
-    fetch(`http://localhost:3000/foods/${data._id}`, 
+    fetch(`https://share-meal-searver.vercel.app/foods/${data._id}`, 
       {
       method: "PUT",
       headers: {

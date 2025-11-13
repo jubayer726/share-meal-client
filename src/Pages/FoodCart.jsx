@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router";
 
 const FoodCart = ({ food }) => {
-  console.log(food);
+  
   const { food_image, food_name, food_quantity, pickup_location, _id } = food;
   return (
     <div className="card bg-base-100 w-96 shadow-sm">

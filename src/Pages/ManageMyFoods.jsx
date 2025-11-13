@@ -9,7 +9,7 @@ const ManageMyFoods = () => {
     const [myFoods, setMyFoods] = useState([]);
   
     useEffect(()=>{
-        fetch(`http://localhost:3000/manage-foods?email=${user.email}`,{
+        fetch(`https://share-meal-searver.vercel.app/manage-foods?email=${user.email}`,{
            headers: {
               authorization: `Bearer ${user.accessToken}`
             }
@@ -32,7 +32,7 @@ const ManageMyFoods = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:3000/foods/${id}`, {
+        fetch(`https://share-meal-searver.vercel.app/foods/${id}`, {
           method: "DELETE",
           headers: {
             "Content-Type" : "application/json",

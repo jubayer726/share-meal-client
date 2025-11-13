@@ -8,7 +8,7 @@ const MyFoodRequests = () => {
   const [foods, setFoods] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/my-requests?email=${user.email}`, {
+    fetch(`https://share-meal-searver.vercel.app/my-requests?email=${user.email}`, {
       headers: {
         authorization: `Bearer ${user.accessToken}`,
       },

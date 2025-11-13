@@ -14,7 +14,7 @@ const AvailableFoods = () => {
    const search_text = e.target.search.value;
   
    setLoading(false)
-   fetch(`http://localhost:3000/search?search=${search_text}`)
+   fetch(`https://share-meal-searver.vercel.app/search?search=${search_text}`)
    .then(res=>res.json())
    .then(data=>{
     setFoods(data)

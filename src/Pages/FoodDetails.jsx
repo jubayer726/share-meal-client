@@ -14,7 +14,7 @@ const FoodDetails = () => {
    const [refetch, setRefetch] = useState(false);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/foods/${id}`,{
+    fetch(`https://share-meal-searver.vercel.app/foods/${id}`,{
         headers: {
               authorization: `Bearer ${user.accessToken}`
             }
@@ -38,7 +38,7 @@ const FoodDetails = () => {
         requested_at: new Date(),
       };
   
-      fetch(`http://localhost:3000/requiests/${food._id}`, {
+      fetch(`https://share-meal-searver.vercel.app/requiests/${food._id}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

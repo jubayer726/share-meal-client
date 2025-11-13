@@ -35,7 +35,7 @@ const AddFood = () => {
           confirmButtonText: "Yes, added it!",
         }).then((result) => {
           if (result.isConfirmed) {
-        fetch('http://localhost:3000/foods',{
+        fetch('https://share-meal-searver.vercel.app/foods',{
           method: "POST",
           headers: {
             "Content-type" : "application/json",

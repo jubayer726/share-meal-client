@@ -5,7 +5,7 @@ import Foods from './Foods';
 
 
 
-const latestFoods = fetch('http://localhost:3000/foods')
+const latestFoods = fetch('https://share-meal-searver.vercel.app/foods')
 .then(res=>res.json());
 
 const Home = () => {

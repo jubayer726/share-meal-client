@@ -29,7 +29,7 @@ const Root = createBrowserRouter([
       {
         path: "available-foods",
         Component: AvailableFoods,
-        loader: () => fetch("http://localhost:3000/available-foods"),
+        loader: () => fetch("https://share-meal-searver.vercel.app/available-foods"),
         hydrateFallback: <Loading></Loading>,
       },
       {
@@ -67,7 +67,7 @@ const Root = createBrowserRouter([
       },
       {
         path: "update-food/:id",
-        loader: ({ params }) => fetch(`http://localhost:3000/foods/${params.id}`),
+        loader: ({ params }) => fetch(`https://share-meal-searver.vercel.app/foods/${params.id}`),
         element: (
           <PrivateRoute>
             <UpdateFoods></UpdateFoods>
