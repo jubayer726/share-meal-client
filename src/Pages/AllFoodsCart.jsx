@@ -6,7 +6,7 @@ const AllFoodsCart = ({ food }) => {
   return (
     <div
       key={_id}
-      className="bg-white rounded-2xl shadow-md hover:shadow-lg transition p-4">   
+      className="bg-white rounded-2xl w-99 shadow-md hover:shadow-lg transition p-4">   
       <img
         src={food_image}
         alt={food_name}

@@ -2,12 +2,14 @@ import React, { use, useState } from "react";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from "../Authorization/AuthContext";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const {signInUser, signInwithGoogle} = use(AuthContext)
     const [showPass, setShowPass] = useState(false)
     const location = useLocation();
     const navigate = useNavigate();
+     const [error, setError] = useState("");
 
   const handleLogIn = (e) =>{
     e.preventDefault();
@@ -22,6 +24,8 @@ const Login = () => {
     })
     .catch(error=>{
       console.log(error.message);
+      const errorCode = error.code;
+      setError(errorCode, error.message);
     })
 
   }
@@ -29,7 +33,7 @@ const Login = () => {
         signInwithGoogle()
         .then(result=>{
             console.log(result.user);
-            alert("Register Successfully")
+            toast.success("Login Successfully")
             navigate(`${location.state? location.state : "/"}`)
         })
         .catch(error=>{
@@ -74,7 +78,7 @@ const Login = () => {
             <div>
               <Link to='/forgetpassword' className="link link-hover">Forgot password?</Link>
             </div>
-            {/* {error && <p className="text-red-700">{error}</p>} */}
+            {error && <p className="text-red-700">{error}</p>}
             <button type="submit" className="btn btn-neutral mt-4">
               Login
             </button>

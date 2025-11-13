@@ -13,11 +13,13 @@ import FoodDetails from "../Pages/FoodDetails";
 import PrivateRoute from "../Authorization/PrivateRoute";
 import Loading from "../Components/Loading";
 import UpdateFoods from "../Pages/UpdateFoods";
+import ErrorPage from "../Components/ErrorPage";
 
 const Root = createBrowserRouter([
   {
     path: "/",
     Component: MainLayout,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         index: true,

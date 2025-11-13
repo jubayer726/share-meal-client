@@ -9,7 +9,11 @@ const ManageMyFoods = () => {
     const [myFoods, setMyFoods] = useState([]);
   
     useEffect(()=>{
-        fetch(`http://localhost:3000/manage-foods?email=${user.email}`)
+        fetch(`http://localhost:3000/manage-foods?email=${user.email}`,{
+           headers: {
+              authorization: `Bearer ${user.accessToken}`
+            }
+        })
         .then(res=>res.json())
         .then(data=>{
             setMyFoods(data)

@@ -3,6 +3,7 @@ import logo from "/logo2.png";
 import { Link, NavLink } from "react-router";
 import { AuthContext } from "../Authorization/AuthContext";
 import { IoLogIn, IoLogOut } from "react-icons/io5";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
   const { user, signOutWithGoogle } = use(AuthContext);
@@ -15,7 +16,7 @@ const Navbar = () => {
   const handleLogOut = () => {
     signOutWithGoogle()
       .then(() => {
-        alert("Logout Successfully");
+        toast.success("Logout Successfully");
       })
       .catch((error) => {
         alert(error.message);

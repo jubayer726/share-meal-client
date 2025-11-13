@@ -37,13 +37,10 @@ const Banner = () => {
 
             
               <div className="mt-8 flex flex-col sm:flex-row gap-3 sm:items-center">
-                <label htmlFor="hero-search" className="sr-only">
-                  Search food
-                </label>
 
                 <Link
                   to="/available-foods"
-                  className="inline-flex items-center justify-center rounded-lg px-4 py-3 border border-emerald-600 text-emerald-700 bg-white hover:bg-emerald-50 focus:outline-none focus:ring-2 focus:ring-emerald-300"
+                  className="inline-flex items-center justify-center rounded-lg px-4 py-3 border border-emerald-600 text-white bg-orange-500 hover:bg-orange-400 focus:outline-none focus:ring-2 focus:ring-emerald-300"
                   aria-label="View all foods"
                 >
                   View All Foods

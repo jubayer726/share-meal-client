@@ -1,10 +1,12 @@
 import React, { use, useState } from 'react';
 import { AuthContext } from '../Authorization/AuthContext';
 import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router';
 
 const AddFood = () => {
   const {user} = use(AuthContext);
   const [refetch, setRefetch] = useState(false);
+  const navigate = useNavigate();
   
     const handleSubmit = (e) =>{
         e.preventDefault();
@@ -44,6 +46,7 @@ const AddFood = () => {
         .then(data=>{
           console.log(data);
           setRefetch(!refetch)
+          navigate('/manage-foods')
         })
         .catch(error=>{
           console.log(error);
@@ -120,7 +123,7 @@ const AddFood = () => {
            <div>
             <label className="label font-medium">Expire Date</label>
             <input
-              type="text"
+              type="date"
               name="expire"
               required
               className="input w-full rounded-full focus:border-0 focus:outline-gray-200"
@@ -144,7 +147,7 @@ const AddFood = () => {
           <div>
             <label className="label font-medium">Food Status</label>
             <select
-              defaultValue={""}
+              defaultValue={"Available"}
               name="available"
               required
               className="select w-full rounded-full focus:border-0 focus:outline-gray-200"

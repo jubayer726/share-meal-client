@@ -21,13 +21,15 @@ const UpdateFoods = () => {
           food_image: form.photo.value,
           food_status: form.available.value
     };
-    fetch(`http://localhost:3000/foods/${data._id}`, {
+    fetch(`http://localhost:3000/foods/${data._id}`, 
+      {
       method: "PUT",
       headers: {
         "Content-type": "application/json",
       },
       body: JSON.stringify(formData),
-    })
+    }
+  )
        .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount > 0) {
@@ -101,7 +103,7 @@ const UpdateFoods = () => {
            <div>
             <label className="label font-medium">Expire Date</label>
             <input
-              type="text"
+              type="date"
               name="expire"
               defaultValue={data.expire_date}
               required

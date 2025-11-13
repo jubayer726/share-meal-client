@@ -27,7 +27,7 @@ const Foods = ({ latestFoods }) => {
   
 
   return (
-    <div className="w-7xl mx-auto">
+    <div className="lg:w-7xl mx-auto w-96 ">
       <div className="flex justify-between gap-4 items-center px-5 lg:px-10">
         <h1 className="text-3xl text-green-900 font-bold text-center my-4">All Foods</h1>
 
@@ -60,13 +60,13 @@ const Foods = ({ latestFoods }) => {
       </form>
       </div>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {
             foods.map(food=><FoodCart key={food._id} food={food}></FoodCart>)
         }
       </div>
-      <div className="flex items-center justify-center">
-        <Link to='/available-foods' className="btn px-10 py-2 my-5 font-bold text-2xl bg-orange-400 text-white border-green-400 rounded-2xl">Show All</Link>
+      <div className="text-center">
+        <Link to='/available-foods' className="btn items-center justify-center px-10 py-2 my-5 font-bold text-2xl bg-orange-500 text-white border-green-400 rounded-2xl">Show All</Link>
       </div>
     </div>
   );

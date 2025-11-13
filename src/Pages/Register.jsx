@@ -42,7 +42,7 @@ const Register = () => {
         signInwithGoogle()
         .then(result=>{
           console.log(result.user);
-          alert("Register successfully")
+          toast.success("Register successfully")
         })
         .catch(error=>{
           console.log(error.message);
