@@ -207,7 +207,7 @@ const FoodDetails = () => {
                   {/* Submit */}
                   <button
                     type="submit"
-                    className="btn w-full text-white mt-4 rounded-full bg-gradient-to from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600"
+                    className="btn w-full text-orange-600 mt-4 rounded-full bg-gradient-to from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600"
                   >
                     Submit Request
                   </button>
