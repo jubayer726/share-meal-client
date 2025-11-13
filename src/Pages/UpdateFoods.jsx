@@ -1,13 +1,11 @@
 import React from 'react';
 import { useLoaderData, useNavigate } from 'react-router';
+import { toast } from 'react-toastify';
 import Swal from 'sweetalert2';
 
 const UpdateFoods = () => {
     const data = useLoaderData();
   const navigate = useNavigate();
-
- console.log(data);
-
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -32,6 +30,8 @@ const UpdateFoods = () => {
   )
        .then((res) => res.json())
       .then((data) => {
+        toast.success("✅ Food details updated successfully!")
+        navigate("/manage-foods");
         if (data.modifiedCount > 0) {
           Swal.fire({
             title: "✅ Updated!",
@@ -39,7 +39,7 @@ const UpdateFoods = () => {
             icon: "success",
             confirmButtonColor: "#22c55e",
           });
-          navigate("/manage-foods");
+          
         }
       });
     }

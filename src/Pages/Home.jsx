@@ -5,6 +5,7 @@ import Foods from './Foods';
 
 
 
+
 const latestFoods = fetch('https://share-meal-searver.vercel.app/foods')
 .then(res=>res.json());
 

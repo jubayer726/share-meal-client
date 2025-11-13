@@ -24,9 +24,9 @@ const MyFoodRequests = () => {
     return <Loading></Loading>;
   }
   return (
-    <div className="w-10/12 mx-auto">
+    <div className="w-7xl mx-auto">
       <h1 className="text-center font-bold text-3xl p-5">My Requiested Foods</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 gap-4 my-2">
         {foods.map((food) => (
           <FoodRequestedCart key={food.food_id} food={food}></FoodRequestedCart>
         ))}
