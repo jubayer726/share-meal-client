@@ -1,46 +1,82 @@
 # Share-Meal
+## Overview
+**Share-Meal** is a MERN stack web application that allows users to share and explore food items (“bites”). Users can add foods, request foods, manage their listed items, and interact through a modern, responsive interface.
 
-## ✨ Features
+![Bite Share Screenshot](https://i.postimg.cc/TwG4KyxY/Share-Meals.jpg)
 
-- **User Authentication:** Users can easily **register and login** to the application.
-- **Restricted Access:** Only registered users have access to essential pages, including:
-  - Service Details Page
-  - Add Service Page (for providers)
-  - My Bookings Page (for clients)
-- **Provider Management:** Registered users can **add and manage their service listings** (acting as service providers).
-- **Booking and Review System:** Registered users can **book services** and **leave reviews/ratings** for the providers they've used.
-- **Responsive Design:** The application is **fully responsive** and accessible on all devices (mobile, tablet, and desktop).
-- **Theme Functionality:** Includes a user-friendly **dark and light theme** toggle.
-- **Secure Authentication:** Utilizes **Firebase Authentication** for secure user management.
 
----
+## Features
 
-## 🛠️ Technology Stack
+### 🔐 Authentication
+- Secure user login using Email & Password
+- Google Sign-In support
+- Protected routes based on user authentication
 
-Hero Home is built with a modern and robust MERN-adjacent stack, utilizing the following key technologies:
+### 🍽️ Food Browsing
+- Home page shows Top Available Foods sorted by quantity
+- View All available Foods
+- Detailed Food Information Page for every item
 
-### 💻 Frontend
+### ➕ Add & Manage Foods
+- Users can add new food items
+- Users can update or delete foods they have posted
+- Check all foods added by the logged-in user
 
-| Technology                        | Description                                                                     |
-| :-------------------------------- | :------------------------------------------------------------------------------ |
-| **React**                         | Core library for building the user interface.                                   |
-| **Tailwind CSS** & **DaisyUI**    | Utility-first CSS framework and component library for fast, responsive styling. |
-| **Firebase**                      | Used specifically for **Authentication**.                                       |
-| **Framer Motion**                 | Library for fluid animations and interactivity.                                 |
-| **React Router**                  | For client-side routing.                                                        |
-| **AOS**                           | Animate On Scroll library.                                                      |
-| **React Hot Toast & SweetAlert2** | For attractive and functional notifications and alerts.                         |
-| **Lucide React & React Icons**    | Icon libraries.                                                                 |
-| **Swiper**                        | For creating modern touch-enabled sliders.                                      |
-| **Recharts**                      | Used for creating responsive charts (if applicable to provider dashboards).     |
+### 📩 Food Requests
+- Users can request any available food item
+- Food owners can view incoming requests
+- Owners can approve or delete requests
 
-### ⚙️ Backend & Database
+### 📱 Responsive & Smooth UI
+- Fully responsive for mobile, tablet, laptop, and desktop
+- Clean and modern UI
+- Smooth interactions + toast notifications
 
-| Technology     | Description                                                                       |
-| :------------- | :-------------------------------------------------------------------------------- |
-| **Express.js** | Minimalist web application framework for Node.js, used for the server-side logic. |
-| **MongoDB**    | NoSQL database for flexible and scalable data storage.                            |
-| **CORS**       | Middleware to enable Cross-Origin Resource Sharing.                               |
-| **Dotenv**     | Module to load environment variables from a `.env` file.                          |
+## Technologies
+### Frontend
+- HTML
+- Tailwind CSS & Daisy UI
+- JavaScript
+- React Js
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Backend
+- Firebase Auth
+- Node JS
+- Express.js
+- MongoDb
+
+Responsive for mobile, tablet, laptop and desktop PC
+
+## Used Tools and others
+- Google Fonts API : Inter font
+- React Router
+- FontAwsome Icons
+- React Toastify
+- SweetAlert 2
+- Motion
+
+## Project Timeline
+- created on 10 Nov 2025
+- completed on 13 Nov 2025
+- last updated on 19 Nov 2025
+
+## Installation / Running Locally
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/nayem-ahmedz/bite-share.git
+   ```
+2. Navigate to the project folder:
+   ```bash
+   cd bite-share
+   ```
+3. Install dependencies:
+   ```bash
+   npm install
+   ```
+4. Start the development server:
+   ```bash
+   npm run dev
+   ```
+
+## live link
+[BiteShare](https://bite-sharee.vercel.app/)
