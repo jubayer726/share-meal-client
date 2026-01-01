@@ -79,4 +79,4 @@ Responsive for mobile, tablet, laptop and desktop PC
    ```
 
 ## live link
-[BiteShare](https://bite-sharee.vercel.app/)
+[Share-Meal](https://guileless-stroopwafel-b2a8f4.netlify.app/)
