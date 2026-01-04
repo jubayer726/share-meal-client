@@ -1,5 +1,5 @@
 import React, { use, useEffect, useState } from "react";
-import { Link, useParams } from "react-router";
+import { Link, useNavigate, useParams } from "react-router";
 import { AuthContext } from "../Authorization/AuthContext";
 import Loading from "../Components/Loading";
 import Swal from "sweetalert2";
@@ -7,6 +7,7 @@ import Swal from "sweetalert2";
 const FoodDetails = () => {
   //  const navigate = useNavigate();
   const { id } = useParams();
+   const navigate = useNavigate();
   const [food, setFood] = useState({});
   const { user, loading, setLoading } = use(AuthContext);
   const [refetch, setRefetch] = useState(false);
@@ -14,9 +15,9 @@ const FoodDetails = () => {
 
   useEffect(() => {
     fetch(`https://share-meal-searver.vercel.app/foods/${id}`, {
-      headers: {
-        authorization: `Bearer ${user.accessToken}`,
-      },
+      // headers: {
+      //   authorization: `Bearer ${user.accessToken}`,
+      // },
     })
       .then((res) => res.json())
       .then((data) => {
@@ -28,6 +29,12 @@ const FoodDetails = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
+    if (!user) {
+      navigate("/login", { state: { from: location } });
+    } else {
+      navigate(`/food-request/${food._id}`);
+    }
+
     const formData = {
       food_id: food._id,
       food_name: food.food_name,
@@ -146,11 +153,18 @@ const FoodDetails = () => {
           {/* Request Button */}
           <div className="text-center">
             <button
+             disabled={!user}
               onClick={() => setShowModal(true)}
-              className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-xl font-semibold shadow-md transition"
+              className={`px-5 py-2 rounded-lg text-white
+              ${user ? "bg-orange-500 hover:bg-orange-600" : "bg-gray-400 cursor-not-allowed"}`}
             >
              Request Food
             </button>
+            {!user && (
+        <p className="mt-2 text-sm text-red-500 text-center">
+          Please login before food request
+        </p>
+      )}
           </div>
 
           {showModal && (

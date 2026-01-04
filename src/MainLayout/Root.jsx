@@ -36,11 +36,12 @@ const Root = createBrowserRouter([
       },
       {
         path: "food-details/:id",
-        element: (
-          <PrivateRoute>
-            <FoodDetails></FoodDetails>
-          </PrivateRoute>
-        ),
+        Component: FoodDetails,
+        // element: (
+        //   <PrivateRoute>
+        //     <FoodDetails></FoodDetails>
+        //   </PrivateRoute>
+        // ),
       },
       {
         path: "about-us",
