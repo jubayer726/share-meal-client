@@ -54,12 +54,12 @@ const AvailableFoods = () => {
           </svg>
           <input name="search" type="search" placeholder="Search" />
         </label>
-        <button className="btn bg-orange-500 text-white rounded-full">
+        <button className="btn-primary">
            Search
         </button>
       </form>
         </div>
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-4 gap-5">
           {foods.map((food) => (
             <AllFoodsCart key={food._id} food={food}></AllFoodsCart>
           ))}

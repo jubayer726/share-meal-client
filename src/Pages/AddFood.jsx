@@ -1,74 +1,79 @@
-import React, { use, useState } from 'react';
-import { AuthContext } from '../Authorization/AuthContext';
-import Swal from 'sweetalert2';
-import { useNavigate } from 'react-router';
+import React, { use, useState } from "react";
+import { AuthContext } from "../Authorization/AuthContext";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router";
+import Loading from "../Components/Loading";
 
 const AddFood = () => {
-  const {user} = use(AuthContext);
+  const { user, loading } = use(AuthContext);
   const [refetch, setRefetch] = useState(false);
   const navigate = useNavigate();
-  
-    const handleSubmit = (e) =>{
-        e.preventDefault();
-        const form = e.target;
-        const formData = {
-          food_name: form.name.value,
-          food_quantity: form.quantity.value,
-          pickup_location: form.location.value,
-          expire_date: form.expire.value,
-          additional_notes: form.description.value,
-          food_image: form.photo.value,
-          donator_name: user.displayName,
-          donator_image: user.photoURL,
-          created_by: user.email,
-          created_at: new Date(),
-          food_status: form.available.value
-        };
 
-         Swal.fire({
-          title: "Are you sure?",
-          text: "You won't be able to revert this!",
-          icon: "warning",
-          showCancelButton: true,
-          confirmButtonColor: "#3085d6",
-          cancelButtonColor: "#d33",
-          confirmButtonText: "Yes, added it!",
-        }).then((result) => {
-          if (result.isConfirmed) {
-        fetch('https://share-meal-searver.vercel.app/foods',{
-          method: "POST",
-          headers: {
-            "Content-type" : "application/json",
-          },
-          body: JSON.stringify(formData)
-        })
-        .then(res=>res.json())
-        .then(data=>{
-          console.log(data);
-          setRefetch(!refetch)
-          navigate('/manage-foods')
-        })
-        .catch(error=>{
-          console.log(error);
-        })
-        
-            Swal.fire({
-              title: "Added!",
-              text: "Your file has been added.",
-              icon: "success",
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const formData = {
+      food_name: form.name.value,
+      food_quantity: form.quantity.value,
+      pickup_location: form.location.value,
+      expire_date: form.expire.value,
+      additional_notes: form.description.value,
+      food_image: form.photo.value,
+      donator_name: user.displayName,
+      donator_image: user.photoURL,
+      created_by: user.email,
+      created_at: new Date(),
+      food_status: form.available.value,
+    };
+
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, added it!",
+    })
+      .then((result) => {
+        if (result.isConfirmed) {
+          fetch("https://share-meal-searver.vercel.app/foods", {
+            method: "POST",
+            headers: {
+              "Content-type": "application/json",
+            },
+            body: JSON.stringify(formData),
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              console.log(data);
+              setRefetch(!refetch);
+              navigate("/manage-foods");
+            })
+            .catch((error) => {
+              console.log(error);
             });
-          }
-          
-        })
-        .catch((error) => {
+
+          Swal.fire({
+            title: "Added!",
+            text: "Your file has been added.",
+            icon: "success",
+          });
+        }
+      })
+      .catch((error) => {
         console.log(error);
       });
   };
-  
-    return (
-        <div className="card border border-gray-200 bg-base-100 w-full max-w-md mx-auto shadow-2xl rounded-2xl">
-        <div className="card-body p-6 relative">
-        <h2 className="text-2xl font-bold text-center mb-6">Add New Foods</h2>
+  if (loading) {
+    return <Loading></Loading>;
+  }
+
+  return (
+    <div className="bg-green-50">
+      <div className="card border border-green-100 bg-base-100 w-full max-w-md mx-auto shadow-2xl rounded-2xl ">
+      <div className="card-body p-6 relative">
+        <h2 className="text-2xl font-bold text-green-500 text-center mb-6">Add New Foods</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* Name Field */}
           <div>
@@ -108,8 +113,8 @@ const AddFood = () => {
               <option value="100 Person +">Serves 100 more people</option>
             </select>
           </div>
-            {/* Pickup Location */}
-           <div>
+          {/* Pickup Location */}
+          <div>
             <label className="label font-medium">Pickup Location</label>
             <input
               type="text"
@@ -119,8 +124,8 @@ const AddFood = () => {
               placeholder="Pickup Location"
             />
           </div>
-            {/* Expire Date */}
-           <div>
+          {/* Expire Date */}
+          <div>
             <label className="label font-medium">Expire Date</label>
             <input
               type="date"
@@ -182,7 +187,8 @@ const AddFood = () => {
         </form>
       </div>
     </div>
-    );
+    </div>
+  );
 };
 
 export default AddFood;

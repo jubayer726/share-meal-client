@@ -5,7 +5,7 @@ const FoodCart = ({ food }) => {
   
   const { food_image, food_name, food_quantity, pickup_location, _id } = food;
   return (
-    <div className="card bg-base-100 w-96 shadow-sm">
+    <div className="card bg-base-100 w-76 shadow-sm">
       <figure className="px-2 lg:px-4 pt-4">
         <img
           src={food_image}
@@ -21,7 +21,8 @@ const FoodCart = ({ food }) => {
         </h2>
         <Link
           to={`/food-details/${_id}`}
-          className="btn w-[280px] lg:w-full outline outline-orange-500 text-orange-600"
+          // className="btn w-[280px] lg:w-full outline outline-orange-500 text-orange-600"
+          className="btn-primary"
         >
           View Details
         </Link>

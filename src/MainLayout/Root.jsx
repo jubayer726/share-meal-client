@@ -14,6 +14,8 @@ import PrivateRoute from "../Authorization/PrivateRoute";
 import Loading from "../Components/Loading";
 import UpdateFoods from "../Pages/UpdateFoods";
 import ErrorPage from "../Components/ErrorPage";
+import About from "../Components/About";
+import Contact from "../Components/Contact";
 
 const Root = createBrowserRouter([
   {
@@ -39,6 +41,14 @@ const Root = createBrowserRouter([
             <FoodDetails></FoodDetails>
           </PrivateRoute>
         ),
+      },
+      {
+        path: "about-us",
+        Component: About,
+      },
+      {
+        path: "contact-us",
+        Component: Contact,
       },
 
       {

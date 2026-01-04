@@ -1,15 +1,23 @@
-import React from "react";
+import React, { use } from "react";
 import { Link } from "react-router";
+import bannerImage from "/header1.jpg";
+import { AuthContext } from "../Authorization/AuthContext";
+import Loading from "./Loading";
 
 const Banner = () => {
+   const {loading} = use(AuthContext)
 
+     
+    if(loading){
+      return <Loading></Loading>
+    }
   
   return (
     <div>
       <header className="relative bg-gradient-to from-emerald-50 to-white overflow-hidden">
         {/* Decorative curved background */}
         <div className="absolute inset-x-0 -top-40 pointer-events-none">
-          <svg
+          {/* <svg
             className="w-full"
             viewBox="0 0 1440 320"
             preserveAspectRatio="none"
@@ -19,35 +27,34 @@ const Banner = () => {
               fill="#ECFDF5"
               d="M0,192L48,197.3C96,203,192,213,288,234.7C384,256,480,288,576,288C672,288,768,256,864,234.7C960,213,1056,203,1152,192C1248,181,1344,171,1392,165.3L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
             />
-          </svg>
+          </svg> */}
+          <img src={bannerImage} alt="photo" 
+          className="w-full absolute inset-0 blur-xs bg-black/30"
+          />
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 py-16 lg:py-24">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-            
             <div>
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight text-emerald-900">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight text-emerald-500">
                 Share Meal
               </h1>
-              <p className="mt-4 text-lg sm:text-xl text-emerald-700 max-w-prose">
+              <p className="mt-4 text-lg sm:text-xl text-emerald-400 max-w-prose">
                 Connect with neighbours to share surplus food, reduce waste, and
                 feed those in need. Find available meals near you or list what
                 you want to donate.
               </p>
 
-            
               <div className="mt-8 flex flex-col sm:flex-row gap-3 sm:items-center">
-
                 <Link
                   to="/available-foods"
-                  className="inline-flex items-center justify-center rounded-lg px-4 py-3 border border-emerald-600 text-white bg-orange-500 hover:bg-orange-400 focus:outline-none focus:ring-2 focus:ring-emerald-300"
+                  className="inline-flex items-center justify-center rounded-lg px-4 py-3 border border-emerald-600 bg-linear-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700 focus:outline-none focus:ring-2 focus:ring-emerald-300"
                   aria-label="View all foods"
                 >
                   View All Foods
                 </Link>
               </div>
 
-              
               <div className="mt-6 flex flex-wrap gap-3 text-sm">
                 <span className="inline-flex items-center gap-2 bg-white border border-emerald-100 rounded-full px-3 py-1 shadow-sm">
                   <svg
@@ -93,10 +100,8 @@ const Banner = () => {
               </div>
             </div>
 
-            
             <div className="relative">
               <div className="mx-auto max-w-md">
-                
                 <div className="bg-white rounded-2xl p-6 shadow-lg ring-1 ring-emerald-50">
                   <div className="flex items-center justify-between">
                     <div>
@@ -113,7 +118,6 @@ const Banner = () => {
                   </div>
 
                   <ul className="mt-4 space-y-3">
-                    
                     {[
                       { name: "Rice & Vegetable Curry", tag: "2 plates" },
                       { name: "Homemade Fish Curry", tag: "1 plate" },
@@ -161,8 +165,7 @@ const Banner = () => {
                   </ul>
                 </div>
 
-                
-                <p className="mt-3 text-xs text-emerald-400">
+                <p className="mt-3 text-sm text-emerald-500">
                   Join the table — donate or request in a few clicks.
                 </p>
               </div>

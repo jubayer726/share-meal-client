@@ -29,7 +29,7 @@ const Foods = ({ latestFoods }) => {
   return (
     <div className="lg:w-7xl mx-auto w-96 ">
       <div className="flex justify-between gap-4 items-center px-5 lg:px-10">
-        <h1 className="text-3xl text-green-900 font-bold text-center my-4">All Foods</h1>
+        <h1 className="text-xl lg:text-3xl text-green-900 font-bold text-center my-4">All Foods</h1>
 
         <form
         onSubmit={handleSearch}
@@ -54,19 +54,19 @@ const Foods = ({ latestFoods }) => {
           </svg>
           <input name="search" type="search" placeholder="Search" />
         </label>
-        <button className="btn bg-orange-500 text-white rounded-full">
+        <button className="btn bg-linear-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700">
            Search
         </button>
       </form>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         {
             foods.map(food=><FoodCart key={food._id} food={food}></FoodCart>)
         }
       </div>
       <div className="text-center">
-        <Link to='/available-foods' className="btn items-center justify-center px-10 py-2 my-5 font-bold text-2xl bg-orange-500 text-white border-green-400 rounded-2xl">Show All</Link>
+        <Link to='/available-foods' className="btn items-center justify-center px-10 py-2 my-5 text-white font-bold text-2xl bg-linear-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700 rounded-xl">Show All</Link>
       </div>
     </div>
   );

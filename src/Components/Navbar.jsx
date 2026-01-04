@@ -2,16 +2,86 @@ import React, { use } from "react";
 import logo from "/logo2.png";
 import { Link, NavLink } from "react-router";
 import { AuthContext } from "../Authorization/AuthContext";
-import { IoLogIn, IoLogOut } from "react-icons/io5";
+import { IoHome, IoLogIn, IoLogOut } from "react-icons/io5";
 import { toast } from "react-toastify";
+import { GiMeal } from "react-icons/gi";
+import { MdContactPage } from "react-icons/md";
+import { FcAbout } from "react-icons/fc";
+import { BiSolidDonateHeart } from "react-icons/bi";
+import ThemeToggle from "./ThemeToggle";
 
 const Navbar = () => {
   const { user, signOutWithGoogle } = use(AuthContext);
 
-  const links = <>
-        <li><NavLink to='/' className={({isActive} )=>isActive? "text-gray-600 underline" : ""}>Home</NavLink></li>
-        <li><NavLink to='/available-foods' className={({isActive} )=>isActive? "text-gray-600 underline" : ""}>Available Foods</NavLink></li>
+  const links = (
+    <>
+      <li>
+        <NavLink
+          to="/"
+          className={({ isActive }) =>
+            isActive
+              ? "text-gray-600 border border-green-500 rounded-lg px-2 py-1"
+              : ""
+          }
+        >
+          <IoHome />
+          Home
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/available-foods"
+          className={({ isActive }) =>
+            isActive
+              ? "text-gray-600 border border-green-500 rounded-lg px-2 py-1"
+              : ""
+          }
+        >
+          <GiMeal />
+          Available Foods
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/about-us"
+          className={({ isActive }) =>
+            isActive
+              ? "text-gray-600 border border-green-500 rounded-lg px-2 py-1"
+              : ""
+          }
+        >
+          <FcAbout />
+          About Us
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/contact-us"
+          className={({ isActive }) =>
+            isActive
+              ? "text-gray-600 border border-green-500 rounded-lg px-2 py-1"
+              : ""
+          }
+        >
+          <MdContactPage />
+          Contact Us
+        </NavLink>
+      </li>
+      <li className="text-orange-500 font-bold">
+        <NavLink
+          to="/add-food"
+          className={({ isActive }) =>
+            isActive
+              ? "text-gray-600 border border-green-500 rounded-lg px-2 py-1"
+              : ""
+          }
+        >
+          <BiSolidDonateHeart />
+          Donate Food
+        </NavLink>
+      </li>
     </>
+  );
 
   const handleLogOut = () => {
     signOutWithGoogle()
@@ -62,8 +132,8 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1 text-l font-semibold">
           {links}
         </ul>
-      </div>  
-           
+      </div>
+
       <div className="navbar-end gap-3">
         {user ? (
           <div className="dropdown dropdown-end z-50">
@@ -88,7 +158,9 @@ const Navbar = () => {
               className="menu  menu-sm dropdown-content bg-base-100 rounded-box z-50 mt-3 w-52 p-2 shadow"
             >
               <div className=" pb-3 border-b border-b-gray-200">
-                <li className="text-sm font-bold">{user.displayName || "User Name"}</li>
+                <li className="text-sm font-bold">
+                  {user.displayName || "User Name"}
+                </li>
                 <li className="text-xs">{user.email}</li>
               </div>
               <li className="mt-3">
@@ -102,7 +174,8 @@ const Navbar = () => {
               <li>
                 <Link to={"/food-request"}>My Food Requests</Link>
               </li>
-              <li><button
+              <li>
+                <button
                   onClick={handleLogOut}
                   className="btn btn-xs text-left bg-linear-to-r from-orange-500 to-red-500 text-white my-2"
                 >
@@ -120,6 +193,13 @@ const Navbar = () => {
             <IoLogIn /> Login
           </Link>
         )}
+
+        <nav
+          className="flex items-center justify-between px-4 bg-gray-100 "
+        >
+        <ThemeToggle />
+        </nav>
+
       </div>
     </div>
   );

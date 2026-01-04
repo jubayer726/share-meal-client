@@ -15,27 +15,27 @@ const Footer = () => {
             </Link>
         </nav>
         <nav>
-          <h6 className="footer-title">Our vision</h6>
+          <h6 className="footer-titles">Our vision</h6>
           <a className="link link-hover">Our Story</a>
           <a className="link link-hover">Our Impact</a>
           <a className="link link-hover">Meet the Team</a>
           <a className="link link-hover">Press and Awards</a>
         </nav>
         <nav>
-          <h6 className="footer-title">Community</h6>
+          <h6 className="footer-titles">Community</h6>
           <a className="link link-hover">About us</a>
           <a className="link link-hover">Contact</a>
           <a className="link link-hover">Jobs</a>
           <a className="link link-hover">Press kit</a>
         </nav>
         <nav>
-          <h6 className="footer-title">Information</h6>
+          <h6 className="footer-titles">Information</h6>
           <a className="link link-hover">Privacy Policy</a>
           <a className="link link-hover">Terms & Conditions</a>
           <a className="link link-hover">Join Us</a>
         </nav>
         <nav>
-          <h6 className="footer-title">Social</h6>
+          <h6 className="footer-titles">Social</h6>
           <div className="grid grid-flow-col gap-4">
             <a href="https://x.com/">
               <svg

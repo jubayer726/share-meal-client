@@ -6,7 +6,7 @@ const AllFoodsCart = ({ food }) => {
   return (
     <div
       key={_id}
-      className="bg-white rounded-2xl w-99 shadow-md hover:shadow-lg transition p-4">   
+      className="bg-white rounded-2xl w-76 shadow-md hover:shadow-lg transition p-4">   
       <img
         src={food_image}
         alt={food_name}
@@ -18,7 +18,7 @@ const AllFoodsCart = ({ food }) => {
         <img
           src={donator_image}
           alt={donator_name}
-          className="w-10 h-10 rounded-full border mr-3"
+          className="w-10 h-10 rounded-full border border-orange-500 mr-3"
         />
         <div>
           <p className="text-sm font-medium text-gray-700">{donator_name}</p>
@@ -42,7 +42,8 @@ const AllFoodsCart = ({ food }) => {
       <div className="text-center">
         <Link
           to={`/food-details/${_id}`}
-          className="inline-block bg-green-600 hover:bg-green-700 text-white font-medium px-4 py-2 rounded-lg transition"
+          // className="inline-block bg-green-600 hover:bg-green-700 text-white font-medium px-4 py-2 rounded-lg transition"
+          className="btn-primary"
         >
           View Details
         </Link>

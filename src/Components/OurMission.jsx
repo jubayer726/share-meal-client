@@ -26,7 +26,7 @@ const OurMission = () => {
         <div className="w-16 h-16 flex items-center justify-center rounded-full bg-blue-50 mb-3">
           <img src="https://i.postimg.cc/MXJw7ntF/M1.avif" alt="Open and honest" className="w-10 h-10 rounded-full object-cover" />
         </div>
-        <h3 className="text-lg font-semibold text-gray-800 mb-2">Open and honest</h3>
+        <h3 className="text-lg font-semibold text-green-500 mb-2">Open and honest</h3>
       </div>
       <p className="text-gray-600 text-sm md:text-base">
         We want you to know how your donation is used and the impact you're
@@ -40,7 +40,7 @@ const OurMission = () => {
         <div className="w-16 h-16 flex items-center justify-center rounded-full bg-blue-50 mb-3">
           <img src="https://i.postimg.cc/0r1vYzZW/m2.avif" alt="Every shared meal counts" className="w-10 h-10 rounded-full object-cover" />
         </div>
-        <h3 className="text-lg font-semibold text-gray-800 mb-2">Every shared meal counts</h3>
+        <h3 className="text-lg font-semibold text-green-500 mb-2">Every shared meal counts</h3>
       </div>
       <p className="text-gray-600 text-sm md:text-base">
         Give what you can — whether it's one meal or one year of meals — and know that it makes a difference.
@@ -53,7 +53,7 @@ const OurMission = () => {
         <div className="w-16 h-16 flex items-center justify-center rounded-full bg-blue-50 mb-3">
           <img src="https://i.postimg.cc/Rqxm7WG8/m3.avif" alt="We're in it together" className="w-10 h-10 rounded-full object-cover" />
         </div>
-        <h3 className="text-lg font-semibold text-gray-800 mb-2">We're in it together</h3>
+        <h3 className="text-lg font-semibold text-green-500 mb-2">We're in it together</h3>
       </div>
       <p className="text-gray-600 text-sm md:text-base">
         We want fighting hunger to be inclusive so that anyone, anywhere, can share the meal.
