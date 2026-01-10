@@ -54,7 +54,7 @@ const AvailableFoods = () => {
           </svg>
           <input name="search" type="search" placeholder="Search" />
         </label>
-        <button className="btn-primary">
+        <button className="btn text-white rounded-full bg-linear-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700">
            Search
         </button>
       </form>

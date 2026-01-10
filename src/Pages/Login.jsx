@@ -43,7 +43,8 @@ const Login = () => {
     }
 
   return (
-    <div className="flex flex-col items-center min-h-screen justify-center">
+    <div className="flex flex-col items-center min-h-screen justify-center bg-[url('/login.jpg')] bg-cover bg-center ">
+      
       <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
         <form onSubmit={handleLogIn} className="card-body">
           <h1 className="text-2xl font-semibold text-center p-5">
